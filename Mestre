@@ -1,0 +1,61 @@
+#include <stdio.h>
+
+// Função recursiva para movimentar a Torre (5 casas para a direita)
+void moverTorre(int casas) {
+    if (casas == 0) return;
+    printf("Direita\n");
+    moverTorre(casas - 1);
+}
+
+// Função recursiva para movimentar a Rainha (8 casas para a esquerda)
+void moverRainha(int casas) {
+    if (casas == 0) return;
+    printf("Esquerda\n");
+    moverRainha(casas - 1);
+}
+
+// Função recursiva + loops aninhados para movimentar o Bispo (5 casas na diagonal)
+void moverBispo(int casas) {
+    if (casas == 0) return;
+
+    for (int i = 0; i < 1; i++) { // vertical
+        for (int j = 0; j < 1; j++) { // horizontal
+            printf("Cima, Direita\n");
+        }
+    }
+
+    moverBispo(casas - 1);
+}
+
+// Movimento complexo do Cavalo (2 casas para cima e 1 para a direita)
+void moverCavalo() {
+    printf("\nMovimento do Cavalo:\n");
+
+    for (int i = 0, j = 2; i < 3 && j > 0; i++, j--) {
+        if (i == 1) continue; // pula a segunda iteração para simular o "L"
+        printf("Cima\n");
+
+        int k = 0;
+        while (k < 1) {
+            printf("Direita\n");
+            k++;
+        }
+
+        if (i == 2) break; // termina após o segundo movimento completo
+    }
+}
+
+int main() {
+    printf("Movimento da Torre:\n");
+    moverTorre(5);
+
+    printf("\nMovimento do Bispo:\n");
+    moverBispo(5);
+
+    printf("\nMovimento da Rainha:\n");
+    moverRainha(8);
+
+    moverCavalo();
+
+    return 0;
+}
